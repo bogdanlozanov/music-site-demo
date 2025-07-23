@@ -109,14 +109,14 @@ const IconGroup = styled.div`
   }
 `;
 
-const MobileMenu = styled.div<{ isOpen: boolean }>`
+const MobileMenu = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 70px;
   left: 0;
   width: 100%;
   height: calc(100vh - 70px);
   background: white;
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+  display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
   flex-direction: column;
   overflow-y: auto;
   padding: 20px;
@@ -225,7 +225,7 @@ const Header: React.FC = () => {
         <FiSearch />
       </SearchBar>
 
-      <MobileMenu isOpen={menuOpen}>
+      <MobileMenu $isOpen={menuOpen}>
         <MobileSection>
           <span>Hot Deals</span>
           <span>New</span>
