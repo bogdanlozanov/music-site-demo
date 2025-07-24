@@ -12,14 +12,14 @@ import {
 } from 'react-icons/fi';
 
 const PromoBanner = styled.div`
-  background: #f3e8ff;
-  color: #8a4af3;
+  background: #A9D6FF;
+  color: #2359C3;
   text-align: center;
   font-size: 0.85rem;
   padding: 6px 10px;
 
   a {
-    color: #6b21a8;
+    color: #3A86FF;
     font-weight: 500;
     text-decoration: underline;
   }
@@ -103,7 +103,7 @@ const IconGroup = styled.div`
   display: flex;
   gap: 16px;
   font-size: 1.2rem;
-
+  align-items: center;
   @media (max-width: 768px) {
     display: none;
   }

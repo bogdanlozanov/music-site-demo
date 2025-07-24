@@ -90,8 +90,8 @@ export default function HeroCarousel() {
           },
         }}
       >
-        {images.map((image) => (
-          <SwiperSlide key={image.alt}>
+        {images.map((image, index) => (
+          <SwiperSlide key={image.alt + index}>
             <SlideImage
               src={image.src}
               alt={image.alt}
