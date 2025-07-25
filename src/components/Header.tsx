@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import {
   FiSearch,
   FiUser,
@@ -10,6 +11,8 @@ import {
   FiMenu,
   FiX,
 } from 'react-icons/fi';
+import { headerLinks, headerCategories } from '@/constants/mockHeaderData';
+import SearchBarWithSuggestions from '@/components/SearchBarWithSuggestions';
 
 const PromoBanner = styled.div`
   background: #A9D6FF;
@@ -42,10 +45,6 @@ const TopRow = styled.div`
   padding: 12px 20px;
   border-bottom: 1px solid #eee;
   flex-wrap: wrap;
-
-  @media (max-width: 768px) {
-    padding: 10px 14px;
-  }
 `;
 
 const Logo = styled.div`
@@ -75,35 +74,13 @@ const NavLinks = styled.div`
   }
 `;
 
-const SearchBar = styled.div`
-  width: 100%;
-  max-width: 500px;
-  margin: 10px auto;
-  padding: 0 20px;
-  position: relative;
-
-  input {
-    width: 100%;
-    padding: 10px 40px 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 0.9rem;
-  }
-
-  svg {
-    position: absolute;
-    right: 32px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #888;
-  }
-`;
 
 const IconGroup = styled.div`
   display: flex;
   gap: 16px;
   font-size: 1.2rem;
   align-items: center;
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -133,11 +110,11 @@ const MobileSection = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  span {
+  a {
     font-size: 1rem;
     font-weight: 500;
-    cursor: pointer;
     text-align: center;
+    color: #222;
   }
 
   &.group-title {
@@ -178,9 +155,10 @@ const CategoryStrip = styled.div`
     padding: 0;
   }
 
-  li {
+  li a {
     white-space: nowrap;
     cursor: pointer;
+    color: white;
   }
 
   @media (max-width: 768px) {
@@ -206,10 +184,11 @@ const Header: React.FC = () => {
         <Logo>Music World</Logo>
 
         <NavLinks>
-          <span>Hot Deals</span>
-          <span>New</span>
-          <span>Top-Seller</span>
-          <span>Bargains</span>
+          {headerLinks.map(({ name, slug }) => (
+            <Link key={slug} href={`/${slug}`}>
+              {name}
+            </Link>
+          ))}
         </NavLinks>
 
         <IconGroup>
@@ -220,25 +199,23 @@ const Header: React.FC = () => {
         </IconGroup>
       </TopRow>
 
-      <SearchBar>
-        <input type="text" placeholder="Search" />
-        <FiSearch />
-      </SearchBar>
+      <SearchBarWithSuggestions />
 
       <MobileMenu $isOpen={menuOpen}>
         <MobileSection>
-          <span>Hot Deals</span>
-          <span>New</span>
-          <span>Top-Seller</span>
-          <span>Bargains</span>
+          {headerLinks.map(({ name, slug }) => (
+            <Link key={slug} href={`/${slug}`} onClick={() => setMenuOpen(false)}>
+              {name}
+            </Link>
+          ))}
         </MobileSection>
 
         <MobileSection className="with-border">
-          <span>Service</span>
-          <span>Contact us</span>
-          <span>About Us</span>
-          <span>Repair Service</span>
-          <span>3-Year Warranty</span>
+          <Link href="#">Service</Link>
+          <Link href="#">Contact us</Link>
+          <Link href="#">About Us</Link>
+          <Link href="#">Repair Service</Link>
+          <Link href="#">3-Year Warranty</Link>
         </MobileSection>
 
         <MobileSection className="with-border">
@@ -252,45 +229,21 @@ const Header: React.FC = () => {
 
         <MobileSection className="with-border">
           <span className="group-title">Categories</span>
-          <span>Guit/Bass</span>
-          <span>Drums</span>
-          <span>Keys</span>
-          <span>Studio</span>
-          <span>Software</span>
-          <span>PA</span>
-          <span>Lighting</span>
-          <span>DJ</span>
-          <span>Video</span>
-          <span>Microphones</span>
-          <span>Signal Proc.</span>
-          <span>Brass</span>
-          <span>Traditional</span>
-          <span>Sheet</span>
-          <span>Cases</span>
-          <span>Cables</span>
-          <span>Accessories</span>
+          {headerCategories.map(({ name, slug }) => (
+            <Link key={slug} href={`/category/${slug}`} onClick={() => setMenuOpen(false)}>
+              {name}
+            </Link>
+          ))}
         </MobileSection>
       </MobileMenu>
 
       <CategoryStrip>
         <ul>
-          <li>Guit/Bass</li>
-          <li>Drums</li>
-          <li>Keys</li>
-          <li>Studio</li>
-          <li>Software</li>
-          <li>PA</li>
-          <li>Lighting</li>
-          <li>DJ</li>
-          <li>Video</li>
-          <li>Microphones</li>
-          <li>Signal Proc.</li>
-          <li>Brass</li>
-          <li>Traditional</li>
-          <li>Sheet</li>
-          <li>Cases</li>
-          <li>Cables</li>
-          <li>Accessories</li>
+          {headerCategories.map(({ name, slug }) => (
+            <li key={slug}>
+              <Link href={`/category/${slug}`}>{name}</Link>
+            </li>
+          ))}
         </ul>
       </CategoryStrip>
     </HeaderContainer>

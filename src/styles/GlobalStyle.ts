@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Link focus for accessibility */
   a:focus-visible {
-    outline: 2px solid #a020f0;
+    outline: 2px solid #007aff;
     outline-offset: 2px;
   }
 
@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(160, 32, 240, 0.4);
+    background-color: #007aff;
     border-radius: 4px;
   }
 
