@@ -3,10 +3,11 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding-top: 171px;
+  padding-top: 200px;
+  margin: 48px auto;
 
   @media (max-width: 768px) {
-    padding-top: 141px;
+    padding-top: 161px;
   }
 `;
 

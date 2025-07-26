@@ -181,7 +181,9 @@ const Header: React.FC = () => {
           {menuOpen ? <FiX /> : <FiMenu />}
         </BurgerButton>
 
-        <Logo>Music World</Logo>
+        <Link href="/" passHref>
+          <Logo>Music World</Logo>
+        </Link>
 
         <NavLinks>
           {headerLinks.map(({ name, slug }) => (

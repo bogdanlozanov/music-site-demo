@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 const Container = styled.section`
   max-width: 2000px;
-  margin: 48px auto;
+  margin: 0 auto;
   padding: 0 16px;
 `;
 

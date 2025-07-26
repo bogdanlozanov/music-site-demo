@@ -111,7 +111,7 @@ export default function HomePage() {
           products={products}
         />
         <NewsletterSignup />
-        {/* <BuyButton /> */}
+        <BuyButton />
       </main>
     </>
   );

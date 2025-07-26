@@ -1,4 +1,3 @@
-// components/Footer.tsx
 'use client';
 
 import styled from 'styled-components';
@@ -9,7 +8,6 @@ import {
   FaPinterestP,
   FaTiktok,
 } from 'react-icons/fa';
-import Image from 'next/image';
 
 const FooterWrapper = styled.footer`
   background-color: #181818;
