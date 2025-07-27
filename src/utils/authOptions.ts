@@ -2,6 +2,7 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -46,6 +47,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user && token) {
         session.user.name = token.name;
         session.user.email = token.email;
+        
       }
       return session;
     },
