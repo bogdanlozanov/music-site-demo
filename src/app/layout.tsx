@@ -5,6 +5,7 @@ import PageWrapper from "../components/PageWrapper";
 import GlobalStyle from '@/styles/GlobalStyle';
 import Footer from "@/components/Footer";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import { Providers } from "./providers";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -32,10 +33,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <GlobalStyle />
-        <Header />
-        <PageWrapper>{children}</PageWrapper>
-        <NewsletterSignup />
-        <Footer />
+        <Providers>
+          <Header />
+          <PageWrapper>{children}</PageWrapper>
+          <NewsletterSignup />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

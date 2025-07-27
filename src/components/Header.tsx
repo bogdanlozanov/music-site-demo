@@ -13,6 +13,8 @@ import {
 import { headerLinks, headerCategories } from '@/constants/mockHeaderData';
 import SearchBarWithSuggestions from '@/components/SearchBarWithSuggestions';
 import Image from 'next/image';
+import LoginDrawer from './LoginDrawer';
+import { useSession, signOut } from 'next-auth/react';
 
 const PromoBanner = styled.div`
   background: #A9D6FF;
@@ -168,10 +170,14 @@ const CategoryStrip = styled.div`
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const { data: session } = useSession();
+
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <HeaderContainer>
+      <LoginDrawer open={loginOpen} onClose={() => setLoginOpen(false)} />
       <PromoBanner>
         🎉 Music World: now up to 65% off! <a href="#">Shop now</a>
       </PromoBanner>
@@ -199,7 +205,23 @@ const Header: React.FC = () => {
 
         <IconGroup>
           <span>EN · $</span>
-          <FiUser />
+
+          {session?.user ? (
+            <>
+              <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>
+                {session.user.name}
+              </span>
+              <button
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#333' }}
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <FiUser onClick={() => setLoginOpen(true)} style={{ cursor: 'pointer' }} />
+          )}
+
           <FiHeart />
           <FiShoppingCart />
         </IconGroup>
