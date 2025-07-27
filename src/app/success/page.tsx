@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { products } from '@/constants/mockData';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
 const Container = styled.main`
   max-width: 800px;
@@ -35,8 +36,7 @@ const ProductImage = styled(Image)`
   object-fit: contain;
   max-width: 100%;
   margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 const ProductName = styled.h2`
@@ -50,13 +50,14 @@ const ProductPrice = styled.p`
   color: #111;
 `;
 
-export default function SuccessPage() {
+// This is the part that uses `useSearchParams`
+function SuccessContent() {
   const searchParams = useSearchParams();
   const slug = searchParams.get('product');
   const product = products.find((p) => p.slug === slug);
 
   return (
-    <Container>
+    <>
       <Title>🎉 Thank you for your purchase!</Title>
       <Description>Your order was successful.</Description>
 
@@ -72,6 +73,17 @@ export default function SuccessPage() {
           <ProductPrice>${product.price}</ProductPrice>
         </ProductCard>
       )}
+    </>
+  );
+}
+
+export const dynamic = 'force-dynamic';
+export default function SuccessPage() {
+  return (
+    <Container>
+      <Suspense fallback={<p>Loading...</p>}>
+        <SuccessContent />
+      </Suspense>
     </Container>
   );
 }
