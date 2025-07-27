@@ -36,7 +36,11 @@ const images = [
     alt: 'Music Days Banner',
   },
   {
-    src: '/carousel/electric_basses_topseller.jpg',
+    src: '/carousel/ZLX.png',
+    alt: 'Music Days Banner',
+  },
+  {
+    src: '/carousel/Roland.png',
     alt: 'Music Days Banner',
   },
   {
@@ -44,7 +48,11 @@ const images = [
     alt: 'Music Days Banner',
   },
   {
-    src: '/carousel/electric_basses_topseller.jpg',
+    src: '/carousel/ZLX.png',
+    alt: 'Music Days Banner',
+  },
+  {
+    src: '/carousel/Roland.png',
     alt: 'Music Days Banner',
   },
   {
@@ -52,15 +60,7 @@ const images = [
     alt: 'Music Days Banner',
   },
   {
-    src: '/carousel/electric_basses_topseller.jpg',
-    alt: 'Music Days Banner',
-  },
-  {
-    src: '/carousel/electric_basses_topseller.jpg',
-    alt: 'Music Days Banner',
-  },
-  {
-    src: '/carousel/electric_basses_topseller.jpg',
+    src: '/carousel/ZLX.png',
     alt: 'Music Days Banner',
   },
 ];

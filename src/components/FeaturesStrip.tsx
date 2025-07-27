@@ -46,20 +46,20 @@ const Label = styled.span`
 // TODO change images
 const features = [
   {
-    icon: '/features/1.svg',
+    icon: '/features/2.png',
     label: 'Days Money-Back',
   },
   {
-    icon: '/features/1.svg',
-    label: 'Years warranty',
+    icon: '/features/5.png',
+    label: 'Free Delivery',
   },
   {
-    icon: '/features/1.svg',
-    label: 'Best service in Europe',
+    icon: '/features/3.png',
+    label: 'Best service in Bulgaria',
   },
   {
-    icon: '/features/1.svg',
-    label: 'Europe’s Largest Warehouse',
+    icon: '/features/4.png',
+    label: 'Bulgaria’s Largest Warehouse',
   },
 ];
 
