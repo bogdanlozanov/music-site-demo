@@ -4,23 +4,12 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-type Product = {
-  image: string;
-  title: string;
-  price: string;
-  rating?: number;
-  reviews?: number;
-};
+import Link from 'next/link';
+import { Product } from '@/types/Product';
 
 type Props = {
   title: string;
-  tabs?: string[];
-  activeTab?: string;
   products: Product[];
-  onTabChange?: (tab: string) => void;
 };
 
 const Container = styled.section`
@@ -49,9 +38,11 @@ const ProductImage = styled(Image)`
   max-width: 100%;
   object-fit: contain;
   margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 10px;
 `;
 
-const ProductTitle = styled.p`
+const ProductName = styled.p`
   font-size: 0.95rem;
   font-weight: 500;
   margin-top: 12px;
@@ -92,24 +83,24 @@ export default function ProductSlider({
           },
         }}
       >
-        {products.map((product, index) => (
-          <SwiperSlide key={index}>
-            <ProductCard>
-              <ProductImage
-                src={product.image}
-                alt={product.title}
-                width={300}
-                height={200}
-              />
-              <ProductTitle>{product.title}</ProductTitle>
-              <ProductRating>
-                {'★'.repeat(product.rating || 0)}{' '}
-                <span style={{ color: '#aaa' }}>
-                  ({product.reviews || 0})
-                </span>
-              </ProductRating>
-              <ProductPrice>{product.price}</ProductPrice>
-            </ProductCard>
+        {products.map((product) => (
+          <SwiperSlide key={product.slug}>
+            <Link href={`/product/${product.slug}`} passHref>
+              <ProductCard>
+                <ProductImage
+                  src={"/products/image.png"}
+                  alt={product.name}
+                  width={300}
+                  height={200}
+                />
+                <ProductName>{product.name}</ProductName>
+                <ProductRating>
+                  {'★'.repeat(product.rating || 0)}{' '}
+                  <span style={{ color: '#aaa' }}>({product.reviews || 0})</span>
+                </ProductRating>
+                <ProductPrice>$ {product.price}</ProductPrice>
+              </ProductCard>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
