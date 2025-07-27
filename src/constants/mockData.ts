@@ -6367,4 +6367,10 @@ export const products = [
     "image": "https://via.placeholder.com/300x300?text=midi-keyboards",
     "description": "This is a MIDI Keyboards from Korg, perfect for all skill levels and sound styles."
   }
-];
+].map((product) => ({
+  ...product,
+  slug: product.name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-') // replace spaces & special chars with -
+    .replace(/(^-|-$)/g, ''),    // trim leading/trailing dashes
+}));

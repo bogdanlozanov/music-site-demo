@@ -149,7 +149,7 @@ export default function SearchBarWithSuggestions() {
         const href =
           item.type === 'category'
             ? `/category/${item.slug}`
-            : `/product/${item.id}`;
+            : `/product/${item.slug}`;
         window.location.href = href;
       }
     }
@@ -200,7 +200,7 @@ export default function SearchBarWithSuggestions() {
                 return (
                   <Link
                     key={prod.id}
-                    href={`/product/${prod.id}`}
+                    href={`/product/${prod.slug}`}
                     className={highlightIndex === i ? 'highlight' : ''}
                   >
                     <ProductPreview>
