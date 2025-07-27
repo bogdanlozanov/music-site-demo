@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fi';
 import { headerLinks, headerCategories } from '@/constants/mockHeaderData';
 import SearchBarWithSuggestions from '@/components/SearchBarWithSuggestions';
+import Image from 'next/image';
 
 const PromoBanner = styled.div`
   background: #A9D6FF;
@@ -46,7 +47,7 @@ const TopRow = styled.div`
   flex-wrap: wrap;
 `;
 
-const Logo = styled.div`
+const Logo = styled(Image)`
   font-size: 1.4rem;
   font-weight: bold;
 `;
@@ -181,7 +182,11 @@ const Header: React.FC = () => {
         </BurgerButton>
 
         <Link href="/" passHref>
-          <Logo>Music World</Logo>
+          <Logo src={"/logo.png"}
+            alt={"logo"}
+            width={133}
+            height={34}
+            priority />
         </Link>
 
         <NavLinks>
