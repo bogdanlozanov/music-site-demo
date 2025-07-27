@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import {
-  FiSearch,
   FiUser,
   FiHeart,
   FiShoppingCart,
