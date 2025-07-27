@@ -1,7 +1,7 @@
 export const categories = [
   {
     "name": "Guitars and Basses",
-    "slug": "guitars-and-basses",
+    "slug": "guit-bass",
     "itemCount": 32521,
     "subcategories": [
       {
@@ -48,7 +48,7 @@ export const categories = [
   },
   {
     "name": "Drums and Percussion",
-    "slug": "drums-and-percussion",
+    "slug": "drums",
     "itemCount": 20269,
     "subcategories": [
       {

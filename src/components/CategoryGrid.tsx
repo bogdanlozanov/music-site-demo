@@ -2,6 +2,7 @@
 
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Section = styled.section`
   padding: 40px 16px;
@@ -49,11 +50,27 @@ const Label = styled.span`
   font-weight: 500;
 `;
 
+const ClickableRow = styled(Link)`
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 8px;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f9f9f9;
+  }
+`;
+
+
 // TODO change images
 export const categories = [
-  { label: 'Guitars and Basses', icon: '/categories/gi.jpg' },
-  { label: 'Drums and Percussion', icon: '/categories/gi.jpg' },
-  { label: 'Keys', icon: '/categories/gi.jpg' },
+  { label: 'Guitars and Basses', icon: '/categories/gi.jpg', slug: "guit-bass" },
+  { label: 'Drums and Percussion', icon: '/categories/gi.jpg', slug: "drums" },
+  { label: 'Keys', icon: '/categories/gi.jpg', slug: "keys" },
   { label: 'Studio and Recording Equipment', icon: '/categories/gi.jpg' },
   { label: 'Software', icon: '/categories/gi.jpg' },
   { label: 'PA Equipment', icon: '/categories/gi.jpg' },
@@ -79,18 +96,31 @@ export default function CategoryGrid() {
         Our <span>Categories</span>
       </Title>
       <Grid>
-        {categories.map((item) => (
-          <Row key={item.label}>
-            <Image
-              src={item.icon}
-              alt={item.label}
-              width={60}
-              height={60}
-              style={{ objectFit: 'contain' }}
-            />
-            <Label>{item.label}</Label>
-          </Row>
-        ))}
+        {categories.map((item) =>
+          item.slug ? (
+            <ClickableRow key={item.label} href={`/category/${item.slug}`}>
+              <Image
+                src={item.icon}
+                alt={item.label}
+                width={60}
+                height={60}
+                style={{ objectFit: 'contain' }}
+              />
+              <Label>{item.label}</Label>
+            </ClickableRow>
+          ) : (
+            <Row key={item.label}>
+              <Image
+                src={item.icon}
+                alt={item.label}
+                width={60}
+                height={60}
+                style={{ objectFit: 'contain' }}
+              />
+              <Label>{item.label}</Label>
+            </Row>
+          )
+        )}
       </Grid>
     </Section>
   );
